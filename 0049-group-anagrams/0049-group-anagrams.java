@@ -5,7 +5,6 @@ public class Solution {
         Map<String, List<String>> map = new HashMap<>();
 
         for (String str : strs) {
-            // Counting sort to sort characters
             int[] charCount = new int[26];
             for (char c : str.toCharArray()) {
                 charCount[c - 'a']++;
@@ -20,20 +19,16 @@ public class Solution {
             }
             String sortedStr = sb.toString();
 
-            // Check if the sorted string is already present in the map
             if (!map.containsKey(sortedStr)) {
                 map.put(sortedStr, new ArrayList<>());
             }
-            // Add the original string to the corresponding group
             map.get(sortedStr).add(str);
         }
 
-        // Convert the map values to a list of lists
         List<List<String>> result = new ArrayList<>(map.values());
         return result;
     }
 
-    // Merge sort implementation
     private void mergeSort(char[] arr, int l, int r) {
         if (l < r) {
             int mid = (l + r) / 2;
